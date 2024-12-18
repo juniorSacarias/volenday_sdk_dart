@@ -1,0 +1,11 @@
+{
+    "env": {
+      "name": "dev",
+      "baseUrl": "https://dev.api.ahamatic.com"
+    },
+    "test": {
+      "name": "test",
+      "baseUrl": "https://test.api.ahamatic.com"
+    }
+  }
+  
