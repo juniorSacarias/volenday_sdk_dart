@@ -20,12 +20,10 @@ void main() async {
     const endpoint = '/api/e/Departments'; // Cambia esto a tu endpoint real
 
     print('Making GET request to endpoint: $endpoint');
-    final response = await sdk.get(endpoint, filter: {
-      'limit': 1,
-      'offset': 0,
-    });
-    print('Response received: $response');
-
+    final response = await sdk.get(
+      endpoint,
+      ids: [1, 2, 3],
+    );
     print('Response received: $response');
   } catch (e) {
     print('Error running the application: $e');

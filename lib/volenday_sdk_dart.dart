@@ -40,7 +40,15 @@ class VolendaySdkDart {
     return VolendaySdkDart._internal(GetUseCase(repository));
   }
 
-  Future<dynamic> get(String endpoint, {Map<String, dynamic>? filter}) {
-    return getUseCase(endpoint, filter: filter);
+  Future<dynamic> get(
+    String endpoint, {
+    List<int>? ids,
+    Map<String, dynamic>? filter,
+  }) {
+    return getUseCase(
+      endpoint,
+      ids,
+      filter: filter,
+    );
   }
 }
