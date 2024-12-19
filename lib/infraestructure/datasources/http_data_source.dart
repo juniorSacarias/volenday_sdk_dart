@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:volenday_sdk_dart/core/utils/http_utils_get.dart';
 
 class HttpDataSource {
   final String baseUrl;
@@ -15,20 +15,19 @@ class HttpDataSource {
     Map<String, dynamic>? query,
     List<int>? ids,
     int? size,
+    int? page,
   }) async {
     // Convertir la lista de IDs en una lista de parámetros de consulta
-    final queryParameters = {
-      if (query != null)
-        ...query.map((key, value) => MapEntry(key, value.toString())),
-      if (ids != null)
-        ...ids
-            .asMap()
-            .map((index, id) => MapEntry('ids[$index]', id.toString())),
-      if (size != null) 'limit': size.toString(),
-    };
+    final queryParameters = HttpUtilsGet.buildQueryParameters(
+      query,
+      ids,
+      size,
+      page,
+    );
 
-    final url = Uri.parse('$baseUrl$endPoint')
-        .replace(queryParameters: queryParameters);
+    final url = Uri.parse('$baseUrl$endPoint').replace(
+      queryParameters: queryParameters,
+    );
 
     final response = await http.get(
       url,
@@ -38,20 +37,6 @@ class HttpDataSource {
       },
     );
 
-    // Verificar los parámetros de consulta en la URL
-    print('Request URL: ${response.request?.url}');
-
-    return _handleResponse(response);
-  }
-
-  dynamic _handleResponse(http.Response response) {
-    if (response.statusCode >= 200 && response.statusCode < 300) {
-      return {
-        'statusCode': response.statusCode,
-        'body': jsonDecode(response.body),
-      };
-    } else {
-      throw Exception('Error: ${response.statusCode} ${response.body}');
-    }
+    return HttpUtilsGet.handleResponse(response);
   }
 }

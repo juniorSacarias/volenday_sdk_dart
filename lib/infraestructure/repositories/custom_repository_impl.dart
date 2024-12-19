@@ -10,13 +10,15 @@ class CustomRepositoryImpl implements CustomRepository {
   Future<dynamic> get(
     String endpoint,
     List<int>? ids,
-    int? size, {
+    int? size,
+    int? page, {
     Map<String, dynamic>? filter,
   }) {
     return dataSource.get(
       endpoint,
       ids: ids,
       size: size,
+      page: page,
       query: filter,
     );
   }

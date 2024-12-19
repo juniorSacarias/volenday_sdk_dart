@@ -41,12 +41,14 @@ class VolendaySdkDart {
     String endpoint, {
     List<int>? ids,
     int? size,
+    int? page,
     Map<String, dynamic>? filter,
   }) {
     return getUseCase(
       endpoint,
       ids,
       size,
+      page,
       filter: filter,
     );
   }

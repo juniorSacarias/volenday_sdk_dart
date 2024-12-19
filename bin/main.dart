@@ -22,12 +22,10 @@ void main() async {
 
     // Hacer una solicitud GET a un endpoint
     const endpoint = '/api/e/_nationality'; // Cambia esto a tu endpoint real
-    const size = 100;
 
     print('Making GET request to endpoint: $endpoint');
     final response = await sdk.get(
       endpoint,
-      size: size,
     );
     // Contar el número total de elementos en la respuesta
     final data = response['body']['data'];
