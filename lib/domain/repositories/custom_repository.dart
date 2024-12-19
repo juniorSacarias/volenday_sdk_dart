@@ -5,8 +5,8 @@ abstract class CustomRepository {
     int? size,
     int? page,
     Map<String, int>? sort,
-    bool? all, 
-    String? keywords, {
-    Map<String, dynamic>? filter,
-  });
+    bool? all,
+    String? keywords,
+    List<Map<String, String>>? filters,
+  );
 }

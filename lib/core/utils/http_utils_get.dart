@@ -10,6 +10,7 @@ class HttpUtilsGet {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    List<Map<String, String>>? filters,
   ) {
     final queryParameters = <String, String>{};
 
@@ -45,6 +46,14 @@ class HttpUtilsGet {
 
     if (keywords != null) {
       queryParameters['keywords'] = keywords;
+    }
+
+    if (filters != null) {
+      for (int i = 0; i < filters.length; i++) {
+        filters[i].forEach((key, value) {
+          queryParameters['filter[\$and][$i][$key]'] = '/$value/i';
+        });
+      }
     }
 
     return queryParameters;

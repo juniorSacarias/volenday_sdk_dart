@@ -13,10 +13,10 @@ class CustomRepositoryImpl implements CustomRepository {
     int? size,
     int? page,
     Map<String, int>? sort,
-    bool? all, 
-    String? keywords, {
-    Map<String, dynamic>? filter,
-  }) {
+    bool? all,
+    String? keywords,
+    List<Map<String, String>>? filters,
+  ) {
     return dataSource.get(
       endpoint,
       ids: ids,
@@ -25,7 +25,7 @@ class CustomRepositoryImpl implements CustomRepository {
       sort: sort,
       all: all,
       keywords: keywords,
-      query: filter,
+      filters: filters,
     );
   }
 }

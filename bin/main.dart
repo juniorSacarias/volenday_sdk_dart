@@ -26,7 +26,9 @@ void main() async {
     print('Making GET request to endpoint: $endpoint');
     final response = await sdk.get(
       endpoint,
-      keywords: 'Zimbabwe',
+      filters: [
+        {'Prefix': 'Esp'}
+      ]
     );
     // Contar el número total de elementos en la respuesta
     final data = response['body']['data'];

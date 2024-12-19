@@ -12,9 +12,9 @@ class GetUseCase {
     int? page,
     Map<String, int>? sort,
     bool? all,
-    String? keywords, {
-    Map<String, dynamic>? filter,
-  }) {
+    String? keywords,
+    List<Map<String, String>>? filters,
+  ) {
     return repository.get(
       endpoint,
       ids,
@@ -23,7 +23,7 @@ class GetUseCase {
       sort,
       all,
       keywords,
-      filter: filter,
+      filters,
     );
   }
 }

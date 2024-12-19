@@ -45,7 +45,7 @@ class VolendaySdkDart {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
-    Map<String, dynamic>? filter,
+    List<Map<String, String>>? filters,
   }) {
     return getUseCase(
       endpoint,
@@ -55,7 +55,7 @@ class VolendaySdkDart {
       sort,
       all,
       keywords,
-      filter: filter,
+      filters,
     );
   }
 }
