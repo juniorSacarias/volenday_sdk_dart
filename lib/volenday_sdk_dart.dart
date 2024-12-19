@@ -40,11 +40,13 @@ class VolendaySdkDart {
   Future<dynamic> get(
     String endpoint, {
     List<int>? ids,
+    int? size,
     Map<String, dynamic>? filter,
   }) {
     return getUseCase(
       endpoint,
       ids,
+      size,
       filter: filter,
     );
   }

@@ -9,12 +9,14 @@ class CustomRepositoryImpl implements CustomRepository {
   @override
   Future<dynamic> get(
     String endpoint,
-    List<int>? ids, {
+    List<int>? ids,
+    int? size, {
     Map<String, dynamic>? filter,
   }) {
     return dataSource.get(
       endpoint,
       ids: ids,
+      size: size,
       query: filter,
     );
   }

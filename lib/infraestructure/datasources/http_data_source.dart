@@ -14,6 +14,7 @@ class HttpDataSource {
     String endPoint, {
     Map<String, dynamic>? query,
     List<int>? ids,
+    int? size,
   }) async {
     // Convertir la lista de IDs en una lista de parámetros de consulta
     final queryParameters = {
@@ -23,6 +24,7 @@ class HttpDataSource {
         ...ids
             .asMap()
             .map((index, id) => MapEntry('ids[$index]', id.toString())),
+      if (size != null) 'limit': size.toString(),
     };
 
     final url = Uri.parse('$baseUrl$endPoint')
@@ -35,6 +37,9 @@ class HttpDataSource {
         'Content-Type': 'application/json',
       },
     );
+
+    // Verificar los parámetros de consulta en la URL
+    print('Request URL: ${response.request?.url}');
 
     return _handleResponse(response);
   }
