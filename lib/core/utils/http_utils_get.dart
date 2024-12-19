@@ -9,6 +9,7 @@ class HttpUtilsGet {
     int? page,
     Map<String, int>? sort,
     bool? all,
+    String? keywords,
   ) {
     final queryParameters = <String, String>{};
 
@@ -40,6 +41,10 @@ class HttpUtilsGet {
 
     if (all != null) {
       queryParameters['all'] = all.toString();
+    }
+
+    if (keywords != null) {
+      queryParameters['keywords'] = keywords;
     }
 
     return queryParameters;

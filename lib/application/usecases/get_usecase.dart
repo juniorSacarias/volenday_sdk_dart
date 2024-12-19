@@ -8,10 +8,11 @@ class GetUseCase {
   Future<dynamic> call(
     String endpoint,
     List<int>? ids,
-    int? size, 
+    int? size,
     int? page,
-    Map<String, int>? sort, 
-    bool? all, {
+    Map<String, int>? sort,
+    bool? all,
+    String? keywords, {
     Map<String, dynamic>? filter,
   }) {
     return repository.get(
@@ -20,7 +21,8 @@ class GetUseCase {
       size,
       page,
       sort,
-      all!,
+      all,
+      keywords,
       filter: filter,
     );
   }
