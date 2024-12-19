@@ -10,7 +10,8 @@ class GetUseCase {
     List<int>? ids,
     int? size, 
     int? page,
-    Map<String, int>? sort, {
+    Map<String, int>? sort, 
+    bool? all, {
     Map<String, dynamic>? filter,
   }) {
     return repository.get(
@@ -19,6 +20,7 @@ class GetUseCase {
       size,
       page,
       sort,
+      all!,
       filter: filter,
     );
   }

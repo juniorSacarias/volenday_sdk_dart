@@ -43,6 +43,7 @@ class VolendaySdkDart {
     int? size,
     int? page,
     Map<String, int>? sort,
+    bool? all,
     Map<String, dynamic>? filter,
   }) {
     return getUseCase(
@@ -51,6 +52,7 @@ class VolendaySdkDart {
       size,
       page,
       sort,
+      all,
       filter: filter,
     );
   }
