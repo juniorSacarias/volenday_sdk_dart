@@ -7,6 +7,7 @@ class HttpUtilsGet {
     List<int>? ids,
     int? size,
     int? page,
+    Map<String, int>? sort,
   ) {
     final queryParameters = <String, String>{};
 
@@ -28,6 +29,12 @@ class HttpUtilsGet {
 
     if (page != null) {
       queryParameters['page'] = page.toString();
+    }
+
+    if (sort != null) {
+      sort.forEach((key, value) {
+        queryParameters['sortBy[$key]'] = value.toString();
+      });
     }
 
     return queryParameters;

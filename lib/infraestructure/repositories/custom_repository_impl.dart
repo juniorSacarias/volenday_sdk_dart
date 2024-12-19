@@ -11,7 +11,8 @@ class CustomRepositoryImpl implements CustomRepository {
     String endpoint,
     List<int>? ids,
     int? size,
-    int? page, {
+    int? page,
+    Map<String, int>? sort, {
     Map<String, dynamic>? filter,
   }) {
     return dataSource.get(
@@ -19,6 +20,7 @@ class CustomRepositoryImpl implements CustomRepository {
       ids: ids,
       size: size,
       page: page,
+      sort: sort,
       query: filter,
     );
   }

@@ -3,7 +3,8 @@ abstract class CustomRepository {
     String endpoint,
     List<int>? ids,
     int? size,
-    int? page, {
+    int? page, 
+    Map<String, int>? sort, {
     Map<String, dynamic>? filter,
   });
 }

@@ -16,6 +16,7 @@ class HttpDataSource {
     List<int>? ids,
     int? size,
     int? page,
+    Map<String, int>? sort,
   }) async {
     // Convertir la lista de IDs en una lista de parámetros de consulta
     final queryParameters = HttpUtilsGet.buildQueryParameters(
@@ -23,6 +24,7 @@ class HttpDataSource {
       ids,
       size,
       page,
+      sort,
     );
 
     final url = Uri.parse('$baseUrl$endPoint').replace(
