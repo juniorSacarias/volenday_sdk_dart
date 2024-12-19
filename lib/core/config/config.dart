@@ -10,13 +10,15 @@ class Config {
   // Load the .env file
   static Future<void> load({
     required String environment,
+    String? envFilePath,
+    String? token,
   }) async {
     // Load the environments from file
+
     // ignore: unused_local_variable
     final content =
         await File('lib/core/config/environments.json').readAsString();
     _environments = json.decode(content);
-
     // Set the current environment
     bool environmentFound = false;
 
@@ -32,12 +34,16 @@ class Config {
           'Environment not found in environments.json: $environment');
     }
 
-    // Load the token from the environment using EnvManager
-    EnvManager.loadEnv();
-    _token = EnvManager.getToken(environment);
+    // Load the token from the environment using EnvManager if not provided
+    if (token != null && token.isNotEmpty) {
+      _token = token;
+    } else {
+      EnvManager.loadEnv();
+      _token = EnvManager.getToken(environment);
 
-    if (_token.isEmpty) {
-      throw Exception('Token is required, please set in the .env file');
+      if (_token.isEmpty) {
+        throw Exception('Token is required, please set in the .env file');
+      }
     }
   }
 

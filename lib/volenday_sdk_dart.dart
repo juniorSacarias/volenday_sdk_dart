@@ -10,29 +10,26 @@ class VolendaySdkDart {
 
   static Future<VolendaySdkDart> create({
     required String environment,
-    required String envFilePath,
+    String? envFilePath,
+    String? token,
   }) async {
-    // Load environment variables
-    await Config.load(environment: environment);
-
-    // Check if the env file is loaded
-    if (Config.currentEnvironment.isNotEmpty) {
-      print('Env file loaded successfully.');
-    } else {
-      print('Error loading the env file.');
-    }
+    // Load environment variables or use provided token
+    await Config.load(
+      environment: environment,
+      envFilePath: envFilePath,
+      token: token,
+    );
 
     // Configure the environment
     final currentEnvironment = Config.currentEnvironment;
 
-    final token = Config.token;
-
     // Create the datasource and repository
     final baseUrl = currentEnvironment['baseUrl'];
+    final finalToken = Config.token;
 
     final dataSource = HttpDataSource(
       baseUrl: baseUrl,
-      token: token,
+      token: finalToken,
     );
 
     final repository = CustomRepositoryImpl(dataSource);
