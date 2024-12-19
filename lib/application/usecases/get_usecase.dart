@@ -1,7 +1,7 @@
-import 'package:volenday_sdk_dart/domain/repositories/custom_repository.dart';
+import 'package:volenday_sdk_dart/domain/repositories/get_repository.dart';
 
 class GetUseCase {
-  final CustomRepository repository;
+  final GetRepository repository;
 
   GetUseCase(this.repository);
 

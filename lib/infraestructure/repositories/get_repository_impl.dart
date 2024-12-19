@@ -1,10 +1,10 @@
-import 'package:volenday_sdk_dart/domain/repositories/custom_repository.dart';
-import 'package:volenday_sdk_dart/infraestructure/datasources/http_data_source.dart';
+import 'package:volenday_sdk_dart/domain/repositories/get_repository.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_datasource.dart';
 
-class CustomRepositoryImpl implements CustomRepository {
-  final HttpDataSource dataSource;
+class GetRepositoryImpl implements GetRepository {
+  final HttpGetDataSource getDataSource;
 
-  CustomRepositoryImpl(this.dataSource);
+  GetRepositoryImpl(this.getDataSource);
 
   @override
   Future<dynamic> get(
@@ -17,7 +17,7 @@ class CustomRepositoryImpl implements CustomRepository {
     String? keywords,
     List<Map<String, String>>? filters,
   ) {
-    return dataSource.get(
+    return getDataSource.get(
       endpoint,
       ids: ids,
       size: size,
@@ -28,4 +28,6 @@ class CustomRepositoryImpl implements CustomRepository {
       filters: filters,
     );
   }
+
+
 }

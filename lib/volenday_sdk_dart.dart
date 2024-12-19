@@ -1,12 +1,19 @@
 import 'package:volenday_sdk_dart/application/usecases/get_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/post_usecase.dart';
 import 'package:volenday_sdk_dart/core/config/config.dart';
-import 'package:volenday_sdk_dart/infraestructure/datasources/http_data_source.dart';
-import 'package:volenday_sdk_dart/infraestructure/repositories/custom_repository_impl.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_post_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/repositories/get_repository_impl.dart';
+import 'package:volenday_sdk_dart/infraestructure/repositories/post_repository_impl.dart';
 
 class VolendaySdkDart {
   final GetUseCase getUseCase;
+  final PostUsecase postUsecase;
 
-  VolendaySdkDart._internal(this.getUseCase);
+  VolendaySdkDart._internal(
+    this.getUseCase,
+    this.postUsecase,
+  );
 
   static Future<VolendaySdkDart> create({
     required String environment,
@@ -27,14 +34,24 @@ class VolendaySdkDart {
     final baseUrl = currentEnvironment['baseUrl'];
     final finalToken = Config.token;
 
-    final dataSource = HttpDataSource(
+    final getDataSource = HttpGetDataSource(
       baseUrl: baseUrl,
       token: finalToken,
     );
 
-    final repository = CustomRepositoryImpl(dataSource);
+    final postDatasource = HttpPostDatasource(
+      baseUrl: baseUrl,
+      token: finalToken,
+    );
 
-    return VolendaySdkDart._internal(GetUseCase(repository));
+    final getRepository = GetRepositoryImpl(getDataSource);
+
+    final postRepository = PostRepositoryImpl(postDatasource);
+
+    return VolendaySdkDart._internal(
+      GetUseCase(getRepository),
+      PostUsecase(postRepository),
+    );
   }
 
   Future<dynamic> get(
@@ -56,6 +73,16 @@ class VolendaySdkDart {
       all,
       keywords,
       filters,
+    );
+  }
+
+  Future<dynamic> post(
+    String endpoint, {
+    required Map<String, dynamic> data,
+  }) {
+    return postUsecase(
+      endpoint,
+      data,
     );
   }
 }

@@ -19,7 +19,7 @@ void main() async {
     );
 
     print('SDK initialized successfully.');
-
+    /*
     // Hacer una solicitud GET a un endpoint
     const endpoint = '/api/e/_nationality'; // Cambia esto a tu endpoint real
 
@@ -35,7 +35,19 @@ void main() async {
     final totalElements = data.length;
 
     print('Response received: $response');
-    print('Total elements received: $totalElements');
+    print('Total elements received: $totalElements');*/
+
+    // Hacer una solicitud POST a un endpoint
+
+    const endpoint = '/api/e/MyNewEntity2024';
+
+    final data = {
+      'Text1': 'Hello Volenday!',
+    };
+
+    final response = await sdk.post(endpoint, data: data);
+
+    print('Response received: $response');
   } catch (e) {
     print('Error running the application: $e');
   }

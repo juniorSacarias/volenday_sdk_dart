@@ -1,11 +1,11 @@
 import 'package:http/http.dart' as http;
-import 'package:volenday_sdk_dart/core/utils/http_utils_get.dart';
+import 'package:volenday_sdk_dart/core/utils/http_utils/http_utils_get.dart';
 
-class HttpDataSource {
+class HttpGetDataSource {
   final String baseUrl;
   final String token;
 
-  HttpDataSource({
+  HttpGetDataSource({
     required this.baseUrl,
     required this.token,
   });

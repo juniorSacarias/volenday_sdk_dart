@@ -1,4 +1,4 @@
-abstract class CustomRepository {
+abstract class GetRepository {
   Future<dynamic> get(
     String endpoint,
     List<int>? ids,
