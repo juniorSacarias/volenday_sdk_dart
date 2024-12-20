@@ -4,5 +4,7 @@ abstract class LoginEmailRespository {
     String password,
     String apiKey,
     bool? remenberMe,
+    String? environment,
+    Map<String, String>? customHeaders,
   );
 }

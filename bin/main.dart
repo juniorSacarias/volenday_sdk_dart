@@ -63,6 +63,10 @@ void main() async {
       password,
       apiKey,
       rememberMe: true,
+      customHeaders: {
+        'X-Api-Key': apiKey,
+      },
+      environment: 'env'
     );
     //print('get response: $get');
     print('Response received: $response');

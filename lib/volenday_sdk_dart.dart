@@ -114,12 +114,16 @@ class VolendaySdkDart {
     String password,
     String apiKey, {
     bool? remenberMe,
+    String? environment,
+    Map<String, String>? customHeaders,
   }) {
     return loginEmailUsecase(
       emailAddress,
       password,
       apiKey,
       rememberMe: remenberMe,
+      environment: environment,
+      customHeaders: customHeaders,
     );
   }
 }

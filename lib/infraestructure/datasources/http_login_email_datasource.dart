@@ -15,9 +15,12 @@ class HttpLoginEmailDatasource {
     String password,
     String apiKey,
     bool? remenberMe,
+    String? environment,
+    Map<String, String>? customHeaders,
   ) async {
     final queryParameters = HttpLoginEmail.buildQueryParameters(
       remenberMe,
+      environment,
     );
 
     final endPoint = '/api/auth/email';
@@ -26,11 +29,13 @@ class HttpLoginEmailDatasource {
       queryParameters: queryParameters,
     );
 
+    final combineHeaders = HttpLoginEmail.buildCustomHeaders(
+      customHeaders,
+    );
+
     final response = await http.post(
       url,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: combineHeaders,
       body: jsonEncode({
         'emailAddress': emailAddress,
         'password': password,

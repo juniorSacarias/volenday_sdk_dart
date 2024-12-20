@@ -10,12 +10,16 @@ class LoginEmailUsecase {
     String password,
     String apiKey, {
     bool? rememberMe,
+    String? environment,
+    Map<String, String>? customHeaders,
   }) {
     return repository.loginWithEmail(
       emailAddress,
       password,
       apiKey,
       rememberMe,
+      environment,
+      customHeaders,
     );
   }
 }

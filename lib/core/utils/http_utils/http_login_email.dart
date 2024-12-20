@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 class HttpLoginEmail {
   static Map<String, String> buildQueryParameters(
     bool? remenberMe,
+    String? environment,
   ) {
     final queryParameters = <String, String>{};
 
@@ -11,7 +12,25 @@ class HttpLoginEmail {
       queryParameters['remenberMe'] = remenberMe.toString();
     }
 
+    if (environment != null) {
+      queryParameters['environment'] = environment;
+    }
+
     return queryParameters;
+  }
+
+  static Map<String, String> buildCustomHeaders(
+    Map<String, String>? customHeaders,
+  ) {
+    final defaultHeaders = {
+      'Content-Type': 'application/json',
+    };
+
+    if (customHeaders != null) {
+      return {...defaultHeaders, ...customHeaders};
+    }
+
+    return defaultHeaders;
   }
 
   static dynamic handleResponse(http.Response response) {
