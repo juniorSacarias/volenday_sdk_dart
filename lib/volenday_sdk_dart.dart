@@ -1,4 +1,6 @@
 import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_facebook_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_google_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
@@ -12,6 +14,8 @@ class VolendaySdkDart {
   final PutUsecase putUsecase;
   final DeleteUsecase deleteUsecase;
   final LoginEmailUsecase loginEmailUsecase;
+  final LoginGoogleUsecase loginGoogleUsecase;
+  final LoginFacebookUsecase loginFacebookUsecase;
 
   VolendaySdkDart._internal(
     this.getUseCase,
@@ -19,6 +23,8 @@ class VolendaySdkDart {
     this.putUsecase,
     this.deleteUsecase,
     this.loginEmailUsecase,
+    this.loginGoogleUsecase,
+    this.loginFacebookUsecase,
   );
 
   static Future<VolendaySdkDart> create({
@@ -43,6 +49,8 @@ class VolendaySdkDart {
       initialization['putUseCase'],
       initialization['deleteUseCase'],
       initialization['loginEmailUseCase'],
+      initialization['loginGoogleUseCase'],
+      initialization['loginFacebookUseCase'],
     );
   }
 
@@ -122,6 +130,34 @@ class VolendaySdkDart {
       password,
       apiKey,
       rememberMe: remenberMe,
+      environment: environment,
+      customHeaders: customHeaders,
+    );
+  }
+
+  Future<dynamic> loginWithGoogle(
+    String apiKey,
+    String token, {
+    String? environment,
+    Map<String, String>? customHeaders,
+  }) {
+    return loginGoogleUsecase(
+      apiKey,
+      token,
+      environment: environment,
+      customHeaders: customHeaders,
+    );
+  }
+
+  Future<dynamic> loginWithFacebook(
+    String apiKey,
+    String token, {
+    String? environment,
+    Map<String, String>? customHeaders,
+  }) {
+    return loginFacebookUsecase(
+      apiKey,
+      token,
       environment: environment,
       customHeaders: customHeaders,
     );
