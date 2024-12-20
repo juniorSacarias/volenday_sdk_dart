@@ -10,6 +10,8 @@ class HttpUtilsGet {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    bool? autoPopulate,
+    bool? count,
     List<Map<String, String>>? filters,
   ) {
     final queryParameters = <String, String>{};
@@ -46,6 +48,14 @@ class HttpUtilsGet {
 
     if (keywords != null) {
       queryParameters['keywords'] = keywords;
+    }
+
+    if (autoPopulate != null) {
+      queryParameters['autoPopulate'] = autoPopulate.toString();
+    }
+
+    if (count != null) {
+      queryParameters['count'] = count.toString();
     }
 
     if (filters != null) {
