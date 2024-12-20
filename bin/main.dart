@@ -41,11 +41,15 @@ void main() async {
 
     const endpoint = '/api/e/MyNewEntity2024';
 
-    final data = {
+    /*final data = {
       'Text1': 'Hello Volenday!',
-    };
+    };*/
 
-    final response = await sdk.post(endpoint, data: data);
+    final response = await sdk.delete(
+      endpoint,
+      3,
+     // data,
+    );
 
     print('Response received: $response');
   } catch (e) {
