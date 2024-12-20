@@ -45,16 +45,16 @@ void main() async {
       'Text1': 'Hello Volenday! in sdk for dart',
     };
 
-    final get = await sdk.get(endpoint);
+    final get = await sdk.get(endpoint, autoPopulate: true, count: false);
 
-    final response = await sdk.put(
+    /*final response = await sdk.put(
       endpoint,
       4,
       autoPopulate: true,
       body: data,
-    );
+    );*/
     print('get response: $get');
-    print('Response received: $response');
+    //print('Response received: $response');
   } catch (e) {
     print('Error running the application: $e');
   }

@@ -19,6 +19,8 @@ class HttpGetDataSource {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    bool? autoPopulate,
+    bool? count,
     List<Map<String, String>>? filters,
   }) async {
     // Convertir la lista de IDs en una lista de parámetros de consulta
@@ -30,6 +32,8 @@ class HttpGetDataSource {
       sort,
       all,
       keywords,
+      autoPopulate,
+      count,
       filters,
     );
 

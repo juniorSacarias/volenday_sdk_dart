@@ -15,6 +15,8 @@ class GetRepositoryImpl implements GetRepository {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    bool? autoPopulate,
+    bool? count,
     List<Map<String, String>>? filters,
   ) {
     return getDataSource.get(
@@ -25,6 +27,8 @@ class GetRepositoryImpl implements GetRepository {
       sort: sort,
       all: all,
       keywords: keywords,
+      autoPopulate: autoPopulate,
+      count: count,
       filters: filters,
     );
   }

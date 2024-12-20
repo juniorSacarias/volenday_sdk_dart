@@ -50,6 +50,8 @@ class VolendaySdkDart {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    bool? autoPopulate,
+    bool? count,
     List<Map<String, String>>? filters,
   }) {
     return getUseCase(
@@ -60,6 +62,8 @@ class VolendaySdkDart {
       sort,
       all,
       keywords,
+      autoPopulate,
+      count,
       filters,
     );
   }

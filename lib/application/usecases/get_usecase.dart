@@ -13,6 +13,8 @@ class GetUseCase {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    bool? autoPopulate,
+    bool? count,
     List<Map<String, String>>? filters,
   ) {
     return repository.get(
@@ -23,6 +25,8 @@ class GetUseCase {
       sort,
       all,
       keywords,
+      autoPopulate,
+      count,
       filters,
     );
   }
