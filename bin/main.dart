@@ -39,13 +39,13 @@ void main() async {
 
     // Hacer una solicitud POST a un endpoint
 
-    const endpoint = '/api/e/MyNewEntity2024';
+    //const endpoint = '/api/e/MyNewEntity2024';
 
-    final data = {
+    /*final data = {
       'Text1': 'Hello Volenday! in sdk for dart',
-    };
+    };*/
 
-    final get = await sdk.get(endpoint, autoPopulate: true, count: false);
+    //final get = await sdk.get(endpoint, autoPopulate: true, count: false);
 
     /*final response = await sdk.put(
       endpoint,
@@ -53,8 +53,18 @@ void main() async {
       autoPopulate: true,
       body: data,
     );*/
-    print('get response: $get');
-    //print('Response received: $response');
+
+    const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
+    const password = 'ZFs-o5';
+    const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
+
+    final response = await sdk.loginEmailUsecase(
+      emailAddress,
+      password,
+      apiKey
+    );
+    //print('get response: $get');
+    print('Response received: $response');
   } catch (e) {
     print('Error running the application: $e');
   }

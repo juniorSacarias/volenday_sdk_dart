@@ -1,3 +1,4 @@
+import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
@@ -10,12 +11,14 @@ class VolendaySdkDart {
   final PostUsecase postUsecase;
   final PutUsecase putUsecase;
   final DeleteUsecase deleteUsecase;
+  final LoginEmailUsecase loginEmailUsecase;
 
   VolendaySdkDart._internal(
     this.getUseCase,
     this.postUsecase,
     this.putUsecase,
     this.deleteUsecase,
+    this.loginEmailUsecase,
   );
 
   static Future<VolendaySdkDart> create({
@@ -39,6 +42,7 @@ class VolendaySdkDart {
       initialization['postUseCase'],
       initialization['putUseCase'],
       initialization['deleteUseCase'],
+      initialization['loginEmailUseCase'],
     );
   }
 
@@ -101,6 +105,19 @@ class VolendaySdkDart {
     return deleteUsecase(
       endpoint,
       id,
+    );
+  }
+
+  Future<dynamic> loginWithEmail(
+    String? endPoint,
+    String emailAddress,
+    String password,
+    String apiKey,
+  ) {
+    return loginEmailUsecase(
+      emailAddress,
+      password,
+      apiKey,
     );
   }
 }
