@@ -8,11 +8,13 @@ class PutUsecase {
   Future<dynamic> call(
     String endpoint,
     int id,
+    bool? autoPopulate,
     Map<String, dynamic> body,
   ) {
     return repository.put(
       endpoint,
       id,
+      autoPopulate,
       body,
     );
   }

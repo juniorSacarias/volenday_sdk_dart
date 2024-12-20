@@ -14,10 +14,17 @@ class HttpPutDatasource {
   Future<dynamic> put(
     String endPoint,
     int id, {
+    bool? autoPopulate,
     required Map<String, dynamic> data,
   }) async {
-    final url = Uri.parse('$baseUrl$endPoint/$id');
-    
+    final queryParameters = HttpUtilsPut.buildQueryParameters(
+      autoPopulate,
+    );
+
+    final url = Uri.parse('$baseUrl$endPoint/$id').replace(
+      queryParameters: queryParameters,
+    );
+
     final response = await http.put(
       url,
       headers: {

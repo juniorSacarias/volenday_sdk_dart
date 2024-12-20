@@ -41,16 +41,19 @@ void main() async {
 
     const endpoint = '/api/e/MyNewEntity2024';
 
-    /*final data = {
-      'Text1': 'Hello Volenday!',
-    };*/
+    final data = {
+      'Text1': 'Hello Volenday! in sdk for dart',
+    };
 
-    final response = await sdk.delete(
+    final get = await sdk.get(endpoint);
+
+    final response = await sdk.put(
       endpoint,
-      3,
-     // data,
+      4,
+      autoPopulate: true,
+      body: data,
     );
-
+    print('get response: $get');
     print('Response received: $response');
   } catch (e) {
     print('Error running the application: $e');

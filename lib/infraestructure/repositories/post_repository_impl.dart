@@ -9,10 +9,12 @@ class PostRepositoryImpl implements PostRespository {
   @override
   Future<dynamic> post(
     String endPoint,
+    bool? autoPopulate,
     Map<String, dynamic> data,
   ) {
     return postDatasource.post(
       endPoint,
+      autoPopulate: autoPopulate,
       data: data,
     );
   }

@@ -7,10 +7,12 @@ class PostUsecase {
 
   Future<dynamic> call(
     String endpoint,
+    bool? autoPopulate,
     Map<String, dynamic> body,
   ) {
     return repository.post(
       endpoint,
+      autoPopulate,
       body,
     );
   }

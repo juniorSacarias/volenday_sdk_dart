@@ -2,6 +2,18 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class HttpUtilsPut {
+  static Map<String, String> buildQueryParameters(
+    bool? autoPopulate,
+  ) {
+    final queryParameters = <String, String>{};
+
+    if (autoPopulate != null) {
+      queryParameters['autoPopulate'] = autoPopulate.toString();
+    }
+
+    return queryParameters;
+  }
+
   static dynamic handleResponse(http.Response response) {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return {

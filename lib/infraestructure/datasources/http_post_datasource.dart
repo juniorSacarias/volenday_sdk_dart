@@ -13,9 +13,16 @@ class HttpPostDatasource {
 
   Future<dynamic> post(
     String endPoint, {
+    bool? autoPopulate,
     required Map<String, dynamic> data,
   }) async {
-    final url = Uri.parse('$baseUrl$endPoint');
+    final queryParameters = HttpUtilsPost.buildQueryParameters(
+      autoPopulate,
+    );
+
+    final url = Uri.parse('$baseUrl$endPoint').replace(
+      queryParameters: queryParameters,
+    );
 
     final response = await http.post(
       url,
