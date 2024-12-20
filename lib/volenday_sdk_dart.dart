@@ -112,12 +112,14 @@ class VolendaySdkDart {
     String? endPoint,
     String emailAddress,
     String password,
-    String apiKey,
-  ) {
+    String apiKey, {
+    bool? remenberMe,
+  }) {
     return loginEmailUsecase(
       emailAddress,
       password,
       apiKey,
+      rememberMe: remenberMe,
     );
   }
 }

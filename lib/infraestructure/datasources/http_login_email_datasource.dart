@@ -10,19 +10,21 @@ class HttpLoginEmailDatasource {
     required this.baseUrl,
   });
 
-  Future<dynamic> loginWithEmail({
-    required String emailAddress,
-    required String password,
-    required String apiKey,
-  }) async {
-
-    print('emailAddress: $emailAddress');
-    print('password: $password');
-    print('apiKey: $apiKey');
+  Future<dynamic> loginWithEmail(
+    String emailAddress,
+    String password,
+    String apiKey,
+    bool? remenberMe,
+  ) async {
+    final queryParameters = HttpLoginEmail.buildQueryParameters(
+      remenberMe,
+    );
 
     final endPoint = '/api/auth/email';
 
-    final url = Uri.parse('$baseUrl$endPoint');
+    final url = Uri.parse('$baseUrl$endPoint').replace(
+      queryParameters: queryParameters,
+    );
 
     final response = await http.post(
       url,

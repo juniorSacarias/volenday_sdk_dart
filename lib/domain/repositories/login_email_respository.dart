@@ -3,5 +3,6 @@ abstract class LoginEmailRespository {
     String emailAddress,
     String password,
     String apiKey,
+    bool? remenberMe,
   );
 }

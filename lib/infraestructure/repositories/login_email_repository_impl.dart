@@ -11,11 +11,13 @@ class LoginEmailRepositoryImpl implements LoginEmailRespository {
     String emailAddress,
     String password,
     String apiKey,
+    bool? rememberMe,
   ) {
     return loginEmailDatasource.loginWithEmail(
-      emailAddress: emailAddress,
-      password: password,
-      apiKey: apiKey,
+      emailAddress,
+      password,
+      apiKey,
+      rememberMe,
     );
   }
 }

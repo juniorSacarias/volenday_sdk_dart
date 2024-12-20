@@ -41,8 +41,6 @@ class HttpGetDataSource {
       queryParameters: queryParameters,
     );
 
-    print('GET: $url');
-
     final response = await http.get(
       url,
       headers: {

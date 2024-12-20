@@ -61,7 +61,8 @@ void main() async {
     final response = await sdk.loginEmailUsecase(
       emailAddress,
       password,
-      apiKey
+      apiKey,
+      rememberMe: true,
     );
     //print('get response: $get');
     print('Response received: $response');

@@ -1,4 +1,3 @@
-
 import 'package:volenday_sdk_dart/domain/repositories/login_email_respository.dart';
 
 class LoginEmailUsecase {
@@ -9,12 +8,14 @@ class LoginEmailUsecase {
   Future<dynamic> call(
     String emailAddress,
     String password,
-    String apiKey,
-  ) {
+    String apiKey, {
+    bool? rememberMe,
+  }) {
     return repository.loginWithEmail(
       emailAddress,
       password,
       apiKey,
+      rememberMe,
     );
   }
 }
