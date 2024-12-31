@@ -1,7 +1,9 @@
+import 'package:volenday_sdk_dart/application/usecases/login_openiam_usecase.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_email_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_facebook_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_google_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_openIAM_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_post_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_put_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_delete_datasource.dart';
@@ -9,6 +11,7 @@ import 'package:volenday_sdk_dart/infraestructure/repositories/get_repository_im
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_email_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_facebook_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_google_respository_impl.dart';
+import 'package:volenday_sdk_dart/infraestructure/repositories/login_openiam_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/post_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/put_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/delete_repository_impl.dart';
@@ -59,6 +62,10 @@ class SdkInitialization {
       token: token,
     );
 
+    final loginOpenIamUsecase = HttpLoginOpeniamDatasource(
+      baseUrl: baseUrl,
+    );
+
     final getRepository = GetRepositoryImpl(getDataSource);
     final postRepository = PostRepositoryImpl(postDataSource);
     final putRepository = PutRepositoryImpl(putDataSource);
@@ -68,6 +75,8 @@ class SdkInitialization {
         LoginGoogleRespositoryImpl(loginGoogleUsecase);
     final loginFacebookRepository =
         LoginFacebookRepositoryImpl(loginFacebookUsecase);
+    final loginOpenIamRepository =
+        LoginOpeniamRepositoryImpl(loginOpenIamUsecase);
 
     return {
       'getUseCase': GetUseCase(getRepository),
@@ -77,6 +86,7 @@ class SdkInitialization {
       'loginEmailUseCase': LoginEmailUsecase(loginEmailRepository),
       'loginGoogleUseCase': LoginGoogleUsecase(loginGoogleRepository),
       'loginFacebookUseCase': LoginFacebookUsecase(loginFacebookRepository),
+      'loginOpenIamUseCase': LoginOpeniamUsecase(loginOpenIamRepository),
     };
   }
 }

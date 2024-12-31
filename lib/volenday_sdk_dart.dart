@@ -1,6 +1,7 @@
 import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/login_facebook_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/login_google_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_openiam_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
@@ -16,6 +17,7 @@ class VolendaySdkDart {
   final LoginEmailUsecase loginEmailUsecase;
   final LoginGoogleUsecase loginGoogleUsecase;
   final LoginFacebookUsecase loginFacebookUsecase;
+  final LoginOpeniamUsecase loginOpeniamUsecase;
 
   VolendaySdkDart._internal(
     this.getUseCase,
@@ -25,6 +27,7 @@ class VolendaySdkDart {
     this.loginEmailUsecase,
     this.loginGoogleUsecase,
     this.loginFacebookUsecase,
+    this.loginOpeniamUsecase,
   );
 
   static Future<VolendaySdkDart> create({
@@ -51,6 +54,7 @@ class VolendaySdkDart {
       initialization['loginEmailUseCase'],
       initialization['loginGoogleUseCase'],
       initialization['loginFacebookUseCase'],
+      initialization['loginOpeniamUsecase'],
     );
   }
 
@@ -160,6 +164,24 @@ class VolendaySdkDart {
       token,
       environment: environment,
       customHeaders: customHeaders,
+    );
+  }
+
+  Future<dynamic> loginWithOpenIAM(
+    String apiKey,
+    String code,
+    String redirectUrl, {
+    String? environment,
+    bool? rememberMe,
+    List<String>? otherData,
+  }) {
+    return loginOpeniamUsecase(
+      apiKey,
+      code,
+      redirectUrl,
+      environment: environment,
+      rememberMe: rememberMe,
+      otherData: otherData,
     );
   }
 }

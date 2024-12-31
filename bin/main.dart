@@ -58,16 +58,12 @@ void main() async {
     const password = 'ZFs-o5';
     const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
 
-    final response = await sdk.loginEmailUsecase(
-      emailAddress,
-      password,
-      apiKey,
-      rememberMe: true,
-      customHeaders: {
-        'X-Api-Key': apiKey,
-      },
-      environment: 'env'
-    );
+    final response = await sdk.loginEmailUsecase(emailAddress, password, apiKey,
+        rememberMe: true,
+        customHeaders: {
+          'X-Api-Key': apiKey,
+        },
+        environment: 'env');
 
     //print('get response: $get');
     print('Response received: $response');
