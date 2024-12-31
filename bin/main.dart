@@ -20,17 +20,17 @@ void main() async {
 
     print('SDK initialized successfully.');
 
-
+    const endPoint = '/api/auth/email';
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';
     const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
+    const refreshToken = 'LuiMroLWaPcThD9ooltFfmj4oapcIaLI';
+    const token =
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlLZXkiOiI3YTAzZjU0MC1iYzg3LTExZWQtOTQwYy02MTY2YTc4MDE2ZDYiLCJhcHBsaWNhdGlvbiI6eyJJZCI6IjI3YzhlYjIwLThlNDEtMTFlYy04YTU5LTY3MDE1Njk5MWRlNiIsIlNjaGVtYU5hbWUiOiIyN2M4ZWIyMC04ZTQxLTExZWMtOGE1OS02NzAxNTY5OTFkZTYifSwiYWNjb3VudCI6eyJQZXJzb25JZCI6NjUsIlVzZXJJZCI6NjZ9LCJleHBpcmF0aW9uIjoiMTgwbSIsImlhdCI6MTczNTY2NDAyMiwiZXhwIjoxNzM1Njc0ODIyfQ.7A5llN5o-HwfDBOZXqNAsuJoX4RFUlKJsmJ5_8jwmGw';
 
-    final response = await sdk.loginEmailUsecase(emailAddress, password, apiKey,
-        rememberMe: true,
-        customHeaders: {
-          'X-Api-Key': apiKey,
-        },
-        environment: 'env');
+    final response = await sdk.refreshToken(token);
+    //final response =
+        //await sdk.loginWithEmail(endPoint, emailAddress, password, apiKey);
 
     //print('get response: $get');
     print('Response received: $response');

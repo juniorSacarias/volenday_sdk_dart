@@ -1,13 +1,14 @@
-import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
-import 'package:volenday_sdk_dart/application/usecases/login_facebook_usecase.dart';
-import 'package:volenday_sdk_dart/application/usecases/login_google_usecase.dart';
-import 'package:volenday_sdk_dart/application/usecases/login_openiam_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/get_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/post_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/put_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_facebook_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_google_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/login_openiam_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/refreshtoken_usecase.dart';
 
 class VolendaySdkDart {
   final GetUseCase getUseCase;
@@ -18,6 +19,7 @@ class VolendaySdkDart {
   final LoginGoogleUsecase loginGoogleUsecase;
   final LoginFacebookUsecase loginFacebookUsecase;
   final LoginOpeniamUsecase loginOpenIamUseCase;
+  final RefreshtokenUsecase refreshTokenUseCase;
 
   VolendaySdkDart._internal(
     this.getUseCase,
@@ -28,6 +30,7 @@ class VolendaySdkDart {
     this.loginGoogleUsecase,
     this.loginFacebookUsecase,
     this.loginOpenIamUseCase,
+    this.refreshTokenUseCase,
   );
 
   static Future<VolendaySdkDart> create({
@@ -55,6 +58,7 @@ class VolendaySdkDart {
       initialization['loginGoogleUseCase'],
       initialization['loginFacebookUseCase'],
       initialization['loginOpenIamUseCase'],
+      initialization['refreshTokenUseCase'],
     );
   }
 
@@ -183,6 +187,16 @@ class VolendaySdkDart {
       environment: environment,
       rememberMe: rememberMe,
       otherData: otherData,
+    );
+  }
+
+  Future<dynamic> refreshToken(
+    String refreshToken, {
+    List<String>? otherData,
+  }) {
+    return refreshTokenUseCase(
+      refreshToken,
+      otherData,
     );
   }
 }
