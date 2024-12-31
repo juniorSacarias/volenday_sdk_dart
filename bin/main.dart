@@ -19,40 +19,7 @@ void main() async {
     );
 
     print('SDK initialized successfully.');
-    /*
-    // Hacer una solicitud GET a un endpoint
-    const endpoint = '/api/e/_nationality'; // Cambia esto a tu endpoint real
 
-    print('Making GET request to endpoint: $endpoint');
-    final response = await sdk.get(
-      endpoint,
-      filters: [
-        {'Prefix': 'Esp'}
-      ]
-    );
-    // Contar el número total de elementos en la respuesta
-    final data = response['body']['data'];
-    final totalElements = data.length;
-
-    print('Response received: $response');
-    print('Total elements received: $totalElements');*/
-
-    // Hacer una solicitud POST a un endpoint
-
-    //const endpoint = '/api/e/MyNewEntity2024';
-
-    /*final data = {
-      'Text1': 'Hello Volenday! in sdk for dart',
-    };*/
-
-    //final get = await sdk.get(endpoint, autoPopulate: true, count: false);
-
-    /*final response = await sdk.put(
-      endpoint,
-      4,
-      autoPopulate: true,
-      body: data,
-    );*/
 
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';

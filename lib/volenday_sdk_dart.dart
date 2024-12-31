@@ -17,7 +17,7 @@ class VolendaySdkDart {
   final LoginEmailUsecase loginEmailUsecase;
   final LoginGoogleUsecase loginGoogleUsecase;
   final LoginFacebookUsecase loginFacebookUsecase;
-  final LoginOpeniamUsecase loginOpeniamUsecase;
+  final LoginOpeniamUsecase loginOpenIamUseCase;
 
   VolendaySdkDart._internal(
     this.getUseCase,
@@ -27,7 +27,7 @@ class VolendaySdkDart {
     this.loginEmailUsecase,
     this.loginGoogleUsecase,
     this.loginFacebookUsecase,
-    this.loginOpeniamUsecase,
+    this.loginOpenIamUseCase,
   );
 
   static Future<VolendaySdkDart> create({
@@ -54,7 +54,7 @@ class VolendaySdkDart {
       initialization['loginEmailUseCase'],
       initialization['loginGoogleUseCase'],
       initialization['loginFacebookUseCase'],
-      initialization['loginOpeniamUsecase'],
+      initialization['loginOpenIamUseCase'],
     );
   }
 
@@ -167,7 +167,8 @@ class VolendaySdkDart {
     );
   }
 
-  Future<dynamic> loginWithOpenIAM(
+  Future<dynamic> loginWithOpenIam(
+    String? endPoint,
     String apiKey,
     String code,
     String redirectUrl, {
@@ -175,7 +176,7 @@ class VolendaySdkDart {
     bool? rememberMe,
     List<String>? otherData,
   }) {
-    return loginOpeniamUsecase(
+    return loginOpenIamUseCase(
       apiKey,
       code,
       redirectUrl,

@@ -62,7 +62,7 @@ class SdkInitialization {
       token: token,
     );
 
-    final loginOpenIamUsecase = HttpLoginOpeniamDatasource(
+    final loginOpenIamUseCase = HttpLoginOpeniamDatasource(
       baseUrl: baseUrl,
     );
 
@@ -76,7 +76,7 @@ class SdkInitialization {
     final loginFacebookRepository =
         LoginFacebookRepositoryImpl(loginFacebookUsecase);
     final loginOpenIamRepository =
-        LoginOpeniamRepositoryImpl(loginOpenIamUsecase);
+        LoginOpeniamRepositoryImpl(loginOpenIamUseCase);
 
     return {
       'getUseCase': GetUseCase(getRepository),
