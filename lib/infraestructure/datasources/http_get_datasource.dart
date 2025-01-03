@@ -23,6 +23,7 @@ class HttpGetDataSource {
     bool? autoPopulate,
     bool? count,
     List<Map<String, String>>? filters,
+    List<String>? fields,
   }) async {
     // Convertir la lista de IDs en una lista de parámetros de consulta
     final queryParameters = HttpUtilsGet.buildQueryParameters(
@@ -37,6 +38,7 @@ class HttpGetDataSource {
       populate,
       count,
       filters,
+      fields,
     );
 
     final url = Uri.parse('$baseUrl$endPoint').replace(

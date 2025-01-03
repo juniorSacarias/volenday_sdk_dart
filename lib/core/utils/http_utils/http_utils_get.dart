@@ -14,6 +14,7 @@ class HttpUtilsGet {
     List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
+    List<String>? fields,
   ) {
     final queryParameters = <String, String>{};
 
@@ -70,6 +71,12 @@ class HttpUtilsGet {
     if (populate != null) {
       for (int i = 0; i < populate.length; i++) {
         queryParameters['populate[$i]'] = populate[i];
+      }
+    }
+
+    if (fields != null) {
+      for (int i = 0; i < fields.length; i++) {
+        queryParameters['fields[$i]'] = fields[i];
       }
     }
 

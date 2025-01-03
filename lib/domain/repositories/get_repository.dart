@@ -11,5 +11,6 @@ abstract class GetRepository {
     List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
+    List<String>? fields,
   );
 }

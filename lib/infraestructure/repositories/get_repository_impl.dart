@@ -19,6 +19,7 @@ class GetRepositoryImpl implements GetRepository {
     List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
+    List<String>? fields,
   ) {
     return getDataSource.get(
       endpoint,
@@ -32,6 +33,7 @@ class GetRepositoryImpl implements GetRepository {
       populate: populate,
       count: count,
       filters: filters,
+      fields: fields,
     );
   }
 

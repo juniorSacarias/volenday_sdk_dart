@@ -27,7 +27,7 @@ void main() async {
     String token = '0yJumOhGBj08cQYWzCzAub235vB7iNeX';
     final response = await sdk.get(
       endPoint,
-      populate: ['EmailAddress']
+      fields: ['EmailAddress']
     );
     //print('get response: $get');
     print('Response received: $response');

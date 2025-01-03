@@ -74,6 +74,7 @@ class VolendaySdkDart {
     List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
+    List<String>? fields,
   }) {
     return getUseCase(
       endpoint,
@@ -87,6 +88,7 @@ class VolendaySdkDart {
       populate,
       count,
       filters,
+      fields,
     );
   }
 
