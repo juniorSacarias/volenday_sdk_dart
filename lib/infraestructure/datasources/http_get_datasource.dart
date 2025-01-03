@@ -19,6 +19,7 @@ class HttpGetDataSource {
     Map<String, int>? sort,
     bool? all,
     String? keywords,
+    List<String>? populate,
     bool? autoPopulate,
     bool? count,
     List<Map<String, String>>? filters,
@@ -33,6 +34,7 @@ class HttpGetDataSource {
       all,
       keywords,
       autoPopulate,
+      populate,
       count,
       filters,
     );

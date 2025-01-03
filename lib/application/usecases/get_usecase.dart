@@ -14,6 +14,7 @@ class GetUseCase {
     bool? all,
     String? keywords,
     bool? autoPopulate,
+    List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
   ) {
@@ -26,6 +27,7 @@ class GetUseCase {
       all,
       keywords,
       autoPopulate,
+      populate,
       count,
       filters,
     );

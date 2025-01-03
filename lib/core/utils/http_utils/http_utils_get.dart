@@ -11,6 +11,7 @@ class HttpUtilsGet {
     bool? all,
     String? keywords,
     bool? autoPopulate,
+    List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
   ) {
@@ -63,6 +64,12 @@ class HttpUtilsGet {
         filters[i].forEach((key, value) {
           queryParameters['filter[\$and][$i][$key]'] = '/$value/i';
         });
+      }
+    }
+
+    if (populate != null) {
+      for (int i = 0; i < populate.length; i++) {
+        queryParameters['populate[$i]'] = populate[i];
       }
     }
 

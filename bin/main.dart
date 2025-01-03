@@ -20,19 +20,17 @@ void main() async {
 
     print('SDK initialized successfully.');
 
-    const endPoint = '/api/auth/email';
+    const endPoint = '/api/e/_users';
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';
     const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
     String token = '0yJumOhGBj08cQYWzCzAub235vB7iNeX';
-    final response =
-        await sdk.loginWithEmail(endPoint, emailAddress, password, apiKey);
-    final refresh = await sdk.refreshToken(
-      token,
+    final response = await sdk.get(
+      endPoint,
+      populate: ['EmailAddress']
     );
     //print('get response: $get');
     print('Response received: $response');
-    print('Refresh Token: $refresh');
   } catch (e) {
     print('Error running the application: $e');
   }

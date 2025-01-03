@@ -8,6 +8,7 @@ abstract class GetRepository {
     bool? all,
     String? keywords,
     bool? autoPopulate,
+    List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
   );

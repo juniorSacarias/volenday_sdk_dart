@@ -16,6 +16,7 @@ class GetRepositoryImpl implements GetRepository {
     bool? all,
     String? keywords,
     bool? autoPopulate,
+    List<String>? populate,
     bool? count,
     List<Map<String, String>>? filters,
   ) {
@@ -28,6 +29,7 @@ class GetRepositoryImpl implements GetRepository {
       all: all,
       keywords: keywords,
       autoPopulate: autoPopulate,
+      populate: populate,
       count: count,
       filters: filters,
     );
