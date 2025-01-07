@@ -1,5 +1,6 @@
 import 'package:volenday_sdk_dart/application/usecases/get_distinct_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/post_many_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
@@ -17,6 +18,7 @@ class VolendaySdkDart {
   final GetManyUsecase getManyUsecase;
   final GetDistinctUsecase getDistinctUsecase;
   final PostUsecase postUsecase;
+  final PostManyUsecase postManyUsecase;
   final PutUsecase putUsecase;
   final DeleteUsecase deleteUsecase;
   final LoginEmailUsecase loginEmailUsecase;
@@ -30,6 +32,7 @@ class VolendaySdkDart {
     this.getManyUsecase,
     this.getDistinctUsecase,
     this.postUsecase,
+    this.postManyUsecase,
     this.putUsecase,
     this.deleteUsecase,
     this.loginEmailUsecase,
@@ -60,6 +63,7 @@ class VolendaySdkDart {
       initialization['getManyUseCase'],
       initialization['getDistinctUseCase'],
       initialization['postUseCase'],
+      initialization['postManyUseCase'],
       initialization['putUseCase'],
       initialization['deleteUseCase'],
       initialization['loginEmailUseCase'],
@@ -120,6 +124,16 @@ class VolendaySdkDart {
     return postUsecase(
       endpoint,
       autoPopulate,
+      data,
+    );
+  }
+
+  Future<dynamic> postMany(
+    String entityId,
+    List<Map<String, dynamic>> data,
+  ) {
+    return postManyUsecase(
+      entityId,
       data,
     );
   }

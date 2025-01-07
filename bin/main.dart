@@ -20,18 +20,21 @@ void main() async {
 
     print('SDK initialized successfully.');
 
-    const entityId = '_nationality'; // Define the entity variable
-    const endPoint = '/api/e/$entityId/distinct';
+    const entityId = '_inputNumber';
+    const collection = '7a03f540-bc87-11ed-940c-6166a78016d6';
+    const data = [{"Number1": "1", "Id": 4}];
+    const endPoint = '/api/e/_inputNumber';
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';
     const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
 
-    final response = await sdk.getDistinct(
+    final response = await sdk.postMany(
       entityId,
+      data,
     );
-     /*final response = await sdk.loginWithEmail(
+    /*final response = await sdk.loginWithEmail(
       'api/auth/email',
-      emailAddress,
+      emailAddress, 
       password,
       apiKey,
     );*/
