@@ -1,5 +1,7 @@
+import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/refreshtoken_usecase.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_many_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_email_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_facebook_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_google_datasource.dart';
@@ -8,6 +10,7 @@ import 'package:volenday_sdk_dart/infraestructure/datasources/http_post_datasour
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_put_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_delete_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_refreshtoken_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/repositories/get_many_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/get_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_email_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_facebook_repository_impl.dart';
@@ -32,6 +35,11 @@ class SdkInitialization {
     required String token,
   }) async {
     final getDataSource = HttpGetDataSource(
+      baseUrl: baseUrl,
+      token: token,
+    );
+
+    final getManyDataSource = HttpGetManyDatasource(
       baseUrl: baseUrl,
       token: token,
     );
@@ -75,6 +83,7 @@ class SdkInitialization {
     );
 
     final getRepository = GetRepositoryImpl(getDataSource);
+    final getManyRepository = GetManyRepositoryImpl(getManyDataSource);
     final postRepository = PostRepositoryImpl(postDataSource);
     final putRepository = PutRepositoryImpl(putDataSource);
     final deleteRepository = DeleteRepositoryImpl(deleteDataSource);
@@ -90,6 +99,7 @@ class SdkInitialization {
 
     return {
       'getUseCase': GetUseCase(getRepository),
+      'getManyUseCase': GetManyUsecase(getManyRepository),
       'postUseCase': PostUsecase(postRepository),
       'putUseCase': PutUsecase(putRepository),
       'deleteUseCase': DeleteUsecase(deleteRepository),

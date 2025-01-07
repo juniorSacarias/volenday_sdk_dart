@@ -1,3 +1,4 @@
+import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
@@ -12,6 +13,7 @@ import 'package:volenday_sdk_dart/application/usecases/refreshtoken_usecase.dart
 
 class VolendaySdkDart {
   final GetUseCase getUseCase;
+  final GetManyUsecase getManyUsecase;
   final PostUsecase postUsecase;
   final PutUsecase putUsecase;
   final DeleteUsecase deleteUsecase;
@@ -23,6 +25,7 @@ class VolendaySdkDart {
 
   VolendaySdkDart._internal(
     this.getUseCase,
+    this.getManyUsecase,
     this.postUsecase,
     this.putUsecase,
     this.deleteUsecase,
@@ -48,9 +51,10 @@ class VolendaySdkDart {
       baseUrl: config['baseUrl'],
       token: config['token'],
     );
-
+    // Todo: implement dependecies injection
     return VolendaySdkDart._internal(
       initialization['getUseCase'],
+      initialization['getManyUseCase'],
       initialization['postUseCase'],
       initialization['putUseCase'],
       initialization['deleteUseCase'],
@@ -89,6 +93,18 @@ class VolendaySdkDart {
       count,
       filters,
       fields,
+    );
+  }
+
+  Future<dynamic> getMany(
+    String endPoint,
+    List<Map<String, dynamic>> entities,
+    String environment,
+  ) {
+    return getManyUsecase(
+      endPoint,
+      entities,
+      environment,
     );
   }
 
