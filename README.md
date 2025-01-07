@@ -142,9 +142,12 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
       int? size;
       int? page;
       int? sort;
-      bool? autoPopulate
+      bool? all;
+      String? keywords;
+      bool? autoPopulate;
       bool? count;
-      String? filters
+      List<Map<String, String>>? filters;
+      List<String>? fields
 
       final response = await sdk.get(
           endPoint,
@@ -152,9 +155,12 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
           size: size,
           page: page,
           sort: sort,
+          all: true / false,
+          keywords: keywords,
           autoPopulate: false / true,
-          count; false / true,
+          count: false / true,
           filters: filters,
+          fields: fields,
         );
     ```
   f. Method Post
