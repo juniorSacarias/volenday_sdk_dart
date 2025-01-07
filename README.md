@@ -108,7 +108,31 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
           },
         );
      ``` 
-  d. Mehod GET
+  d. Auth Login with OpenIAM:
+  
+       ```
+       Type Schema:
+     
+          required String apiKey,
+          required String code,
+          required String redirectUrl,
+          bool? remenberMe,
+          List<String>? otherData,
+          String? environment,
+          String? endPoint
+     
+        Example: 
+
+        final response = await sdk.loginWithOpenIam(
+          apiKey,
+          code,
+          redirectUrl,
+          environment: 'dev',
+          rememberMe: true,
+          otherData: ['otherData'],
+        );
+     ``` 
+  e. Mehod GET
 
     ```
     Type Schema:
@@ -133,7 +157,7 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
           filters: filters,
         );
     ```
-  e. Method Post
+  f. Method Post
 
    ```
     Type Schema:
@@ -147,7 +171,7 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
           body: data
         );
    ```
-  f. Method Put by Id
+  g. Method Put by Id
   ```
    Type Schema:
       required String endPoint;
@@ -162,7 +186,7 @@ VolendaySDK - Dart was born as a fork of VolendaySDK which is exclusive for java
           body: data,
         );
   ```
-  g. Method Delete
+  h. Method Delete
   ```
    Type Schema:
       required String endPoint;
@@ -185,7 +209,7 @@ This project uses the following key libraries to ensure quality and performance:
 - **[dotenv](https://pub.dev/packages/dotenv)**
 ---
 
-## 🚀 Features for V.0.0.2
+## 🚀 Features for V.0.1.0
 In this version I have included the basic functions to start with MVP testing.
 
 Still to be included are:
@@ -197,8 +221,6 @@ Still to be included are:
   GetMany
   LoginIntoAppCreator
   LoginWithTheMailVerify
-  LoginWithOpenIAm
-  RefreshToken
   UpdateMany
   VerifyAppWithId
   VerifyAppWithURL
