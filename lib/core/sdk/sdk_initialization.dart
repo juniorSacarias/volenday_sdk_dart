@@ -1,6 +1,6 @@
-import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/refreshtoken_usecase.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_distinct_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_get_many_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_email_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_login_facebook_datasource.dart';
@@ -10,6 +10,7 @@ import 'package:volenday_sdk_dart/infraestructure/datasources/http_post_datasour
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_put_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_delete_datasource.dart';
 import 'package:volenday_sdk_dart/infraestructure/datasources/http_refreshtoken_datasource.dart';
+import 'package:volenday_sdk_dart/infraestructure/repositories/get_distinct_respository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/get_many_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/get_repository_impl.dart';
 import 'package:volenday_sdk_dart/infraestructure/repositories/login_email_repository_impl.dart';
@@ -21,6 +22,8 @@ import 'package:volenday_sdk_dart/infraestructure/repositories/put_repository_im
 import 'package:volenday_sdk_dart/infraestructure/repositories/delete_repository_impl.dart';
 import 'package:volenday_sdk_dart/application/usecases/delete_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/get_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/get_distinct_usecase.dart';
+import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/post_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/put_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/login_email_usecase.dart';
@@ -40,6 +43,11 @@ class SdkInitialization {
     );
 
     final getManyDataSource = HttpGetManyDatasource(
+      baseUrl: baseUrl,
+      token: token,
+    );
+
+    final getDistinctDatasource = HttpGetDistinctDatasource(
       baseUrl: baseUrl,
       token: token,
     );
@@ -84,6 +92,7 @@ class SdkInitialization {
 
     final getRepository = GetRepositoryImpl(getDataSource);
     final getManyRepository = GetManyRepositoryImpl(getManyDataSource);
+    final getDistinctRepository = GetDistinctRespositoryImpl(getDistinctDatasource);
     final postRepository = PostRepositoryImpl(postDataSource);
     final putRepository = PutRepositoryImpl(putDataSource);
     final deleteRepository = DeleteRepositoryImpl(deleteDataSource);
@@ -100,6 +109,7 @@ class SdkInitialization {
     return {
       'getUseCase': GetUseCase(getRepository),
       'getManyUseCase': GetManyUsecase(getManyRepository),
+      'getDistinctUseCase': GetDistinctUsecase(getDistinctRepository),
       'postUseCase': PostUsecase(postRepository),
       'putUseCase': PutUsecase(putRepository),
       'deleteUseCase': DeleteUsecase(deleteRepository),

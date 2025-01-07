@@ -1,3 +1,4 @@
+import 'package:volenday_sdk_dart/application/usecases/get_distinct_usecase.dart';
 import 'package:volenday_sdk_dart/application/usecases/get_many_usecase.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_config.dart';
 import 'package:volenday_sdk_dart/core/sdk/sdk_initialization.dart';
@@ -14,6 +15,7 @@ import 'package:volenday_sdk_dart/application/usecases/refreshtoken_usecase.dart
 class VolendaySdkDart {
   final GetUseCase getUseCase;
   final GetManyUsecase getManyUsecase;
+  final GetDistinctUsecase getDistinctUsecase;
   final PostUsecase postUsecase;
   final PutUsecase putUsecase;
   final DeleteUsecase deleteUsecase;
@@ -26,6 +28,7 @@ class VolendaySdkDart {
   VolendaySdkDart._internal(
     this.getUseCase,
     this.getManyUsecase,
+    this.getDistinctUsecase,
     this.postUsecase,
     this.putUsecase,
     this.deleteUsecase,
@@ -55,6 +58,7 @@ class VolendaySdkDart {
     return VolendaySdkDart._internal(
       initialization['getUseCase'],
       initialization['getManyUseCase'],
+      initialization['getDistinctUseCase'],
       initialization['postUseCase'],
       initialization['putUseCase'],
       initialization['deleteUseCase'],
@@ -117,6 +121,28 @@ class VolendaySdkDart {
       endpoint,
       autoPopulate,
       data,
+    );
+  }
+
+  Future<dynamic> getDistinct(
+    String entityId, {
+    dynamic cacheExpiration,
+    dynamic cacheKey,
+    bool? count,
+    List<String>? fields,
+    List<Map<String, dynamic>>? filter,
+    List<String>? distinct,
+    List<Map<String, dynamic>>? sortBy,
+  }) {
+    return getDistinctUsecase(
+      entityId,
+      cacheExpiration,
+      cacheKey,
+      count,
+      fields,
+      filter,
+      distinct,
+      sortBy,
     );
   }
 

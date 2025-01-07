@@ -20,28 +20,21 @@ void main() async {
 
     print('SDK initialized successfully.');
 
-    const endPoint = '/api/e/multiple';
+    const entityId = '_nationality'; // Define the entity variable
+    const endPoint = '/api/e/$entityId/distinct';
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';
     const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
-    const entities = [
-      {
-        'entity': '_users',
-      },
-      {'entity': '_nationality'},
-    ];
-    String token = '0yJumOhGBj08cQYWzCzAub235vB7iNeX';
-    final response = await sdk.getMany(
-      endPoint,
-      entities,
-      environment,
+
+    final response = await sdk.getDistinct(
+      entityId,
     );
-    /* final response = await sdk.loginWithEmail(
+     /*final response = await sdk.loginWithEmail(
       'api/auth/email',
       emailAddress,
       password,
       apiKey,
-    ); */
+    );*/
     //print('get response: $get');
     print('Response received: $response');
   } catch (e) {
