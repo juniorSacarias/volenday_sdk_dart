@@ -21,12 +21,12 @@ void main() async {
     print('SDK initialized successfully.');
 
     const entityId = '_inputNumber';
-    const collection = '7a03f540-bc87-11ed-940c-6166a78016d6';
+    const collection = '';
     const data = [{"Number1": "1", "Id": 4}];
     const endPoint = '/api/e/_inputNumber';
     const emailAddress = "junior.sacarias.garcia.diaz@volenday.com";
     const password = 'ZFs-o5';
-    const apiKey = '7a03f540-bc87-11ed-940c-6166a78016d6';
+    const apiKey = '';
 
     final response = await sdk.postMany(
       entityId,
